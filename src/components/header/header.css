@@ -1,0 +1,84 @@
+/* MAIN SECTION */
+header > div:last-child {
+  /* flex: 1; */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 56px;
+  padding: 0 24px;
+}
+
+/* YT LOGO */
+.logo {
+  cursor: pointer;
+  margin-left: 2rem;
+}
+
+/* SEARCH BAR */
+.search-engine {
+  display: flex;
+  align-items: center;
+  width: 45%;
+}
+
+.search-engine input {
+  flex: 1;
+  height: 40px;
+  border: 1px solid #c6c6c6;
+  border-right: none;
+  border-radius: 40px 0 0 40px;
+  padding: 0 16px;
+  font-size: 16px;
+  outline: none;
+}
+
+.search-engine input:focus {
+  border-color: #1c62b9;
+}
+
+.search-btn {
+  width: 64px;
+  height: 40px;
+  border: 1px solid #c6c6c6;
+  border-radius: 0 40px 40px 0;
+  background: #f8f8f8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.search-btn:hover {
+  background: #efefef;
+}
+
+/* USER AREA */
+.user-area {
+  display: flex;
+  gap: 12px;
+}
+
+.btn {
+  height: 38px;
+  padding: 0 18px;
+  border-radius: 20px;
+  border: 1px solid #d3d3d3;
+  background: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.btn:hover {
+  background: #f2f2f2;
+}
+
+.btn.fill {
+  background: #065fd4;
+  color: white;
+  border: none;
+}
+
+.btn.fill:hover {
+  background: #0356c2;
+}

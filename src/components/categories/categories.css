@@ -1,0 +1,43 @@
+/* YOUTUBE CATEGORY BAR */
+
+.categories {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  list-style: none;
+  overflow-x: scroll;
+  white-space: nowrap;
+  padding: 14px 24px;
+  margin: 0;
+  background: #fff;
+  scrollbar-width: none;
+  padding-left: 0;
+  width: 80vw;
+}
+
+.categories::-webkit-scrollbar {
+  display: none;
+}
+
+.categories li {
+  background: #f2f2f2;
+  color: #0f0f0f;
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: "Roboto", sans-serif;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  flex-shrink: 0;
+}
+
+.categories li:hover {
+  background: #e5e5e5;
+}
+
+/* Active selected category like YouTube */
+.categories li.active {
+  background: #0f0f0f;
+  color: white;
+}
