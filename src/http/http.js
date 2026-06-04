@@ -1,5 +1,3 @@
-const APIKEY = "123";
-
 export const fetchCategories = async () => {
   try {
     const response = await fetch(
@@ -7,7 +5,7 @@ export const fetchCategories = async () => {
       {
         method: "GET",
         headers: {
-          Authorization: `Bearer ${APIKEY}`,
+          Authorization: `Bearer ${CATEGORIES_APIKEY}`,
           "Content-Type": "application/json",
         },
       },
@@ -17,5 +15,20 @@ export const fetchCategories = async () => {
     return data;
   } catch (error) {
     console.log(error);
+  }
+};
+
+export const fetchVidByCategory = async () => {
+  try {
+    const response = await fetch(
+      `https://www.googleapis.com/youtube/v3/search?part=snippet&q=gaming&type=video&maxResults=10&key=${VID_APIKEY_BY_CATEGORY}`,
+      {
+        method: "GET",
+      },
+    );
+    const data = response.json();
+    return data;
+  } catch (error) {
+    console.error(error);
   }
 };

@@ -5,7 +5,7 @@ import "./categories.css";
 
 export default function Categories() {
   const { categoriesData } = useSelector((state) => state.categories);
-  const dispatch = useDispatch({});
+  const dispatch = useDispatch();
 
   console.log(categoriesData);
 

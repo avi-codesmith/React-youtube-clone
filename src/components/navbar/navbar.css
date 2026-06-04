@@ -18,13 +18,11 @@ header {
   justify-content: space-between;
   align-items: center;
   background: #fff;
-  border-bottom: 1px solid #e5e5e5;
 }
 
 /* SIDEBAR */
 .side-navigation {
   width: 240px;
-  border-right: 1px solid #e5e5e5;
   padding: 14px 12px;
   background: #fff;
   height: 92.5vh;
@@ -32,6 +30,10 @@ header {
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
+}
+
+.side-navigation::-webkit-scrollbar {
+  display: none;
 }
 
 .home-shorts,

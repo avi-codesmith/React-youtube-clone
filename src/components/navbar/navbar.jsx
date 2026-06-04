@@ -1,4 +1,4 @@
-import Homepage from "../homepage/homepage";
+import Homepage from "../../pages/homepage/homepage";
 import "./navbar.css";
 
 export default function Navbar() {
