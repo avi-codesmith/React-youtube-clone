@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import CategoriesSlice from "./categoriesSlice";
-import { vidByCategorySlice } from "./vidByCategory";
+import { vidByCategorySlice } from "./vidByCategorySlice";
 
 export const store = configureStore({
   reducer: {

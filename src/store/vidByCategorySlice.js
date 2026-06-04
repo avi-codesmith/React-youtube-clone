@@ -5,8 +5,8 @@ const initialState = { loading: false, error: false, videoData: [] };
 
 export const getVidByCategory = createAsyncThunk(
   "getVidByCategory",
-  async () => {
-    const data = await fetchVidByCategory();
+  async (category) => {
+    const data = await fetchVidByCategory(category);
     return data;
   },
 );

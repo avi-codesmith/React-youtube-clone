@@ -1,11 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
 import Categories from "../../components/categories/categories";
-import { useEffect } from "react";
-import { getVidByCategory } from "../../store/vidByCategory";
+import { useEffect, useState } from "react";
+import { getVidByCategory } from "../../store/vidByCategorySlice";
 import "./homepage.css";
 import { Link } from "react-router-dom";
 
 export default function Homepage() {
+  const [category, setCategory] = useState("gaming");
   const dispatch = useDispatch();
   const { videoData } = useSelector((state) => state.getVidByCategory);
 
@@ -54,14 +55,18 @@ export default function Homepage() {
     </li>
   ));
 
+  function handleCategory(categoryName) {
+    setCategory(categoryName);
+  }
+
   useEffect(() => {
-    dispatch(getVidByCategory());
-  }, []);
+    dispatch(getVidByCategory(category));
+  }, [category, dispatch]);
 
   return (
     <>
       <div>
-        <Categories />
+        <Categories handleCategory={handleCategory} categoryName={category} />
         <ul className="videos-wrapper">{videos}</ul>
       </div>
     </>

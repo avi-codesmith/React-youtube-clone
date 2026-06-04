@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getCategories } from "../../store/categoriesSlice";
 import "./categories.css";
 
-export default function Categories() {
+export default function Categories({ handleCategory, categoryName }) {
   const { categoriesData } = useSelector((state) => state.categories);
   const dispatch = useDispatch();
 
@@ -15,8 +15,12 @@ export default function Categories() {
 
   const categoriesName = (
     <ul className="categories">
-      {categoriesData?.categories?.map((category, index) => (
-        <li className={index === 0 ? "active" : ""} key={category.id}>
+      {categoriesData?.categories?.map((category) => (
+        <li
+          onClick={() => handleCategory(category.title)}
+          className={categoryName === category.title ? "active" : ""}
+          key={category.id}
+        >
           {category.title}
         </li>
       ))}
