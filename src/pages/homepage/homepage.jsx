@@ -6,11 +6,11 @@ import "./homepage.css";
 import { Link } from "react-router-dom";
 
 export default function Homepage() {
-  const [category, setCategory] = useState("gaming");
   const dispatch = useDispatch();
   const { videoData } = useSelector((state) => state.getVidByCategory);
+  const { type } = useSelector((state) => state.typeOfVid);
 
-  console.log(videoData);
+  console.log(type);
 
   const getTimeAgo = (publishTime) => {
     const diff = new Date() - new Date(publishTime);
@@ -55,18 +55,14 @@ export default function Homepage() {
     </li>
   ));
 
-  function handleCategory(categoryName) {
-    setCategory(categoryName);
-  }
-
   useEffect(() => {
-    dispatch(getVidByCategory(category));
-  }, [category, dispatch]);
+    dispatch(getVidByCategory(type));
+  }, [type]);
 
   return (
     <>
       <div>
-        <Categories handleCategory={handleCategory} categoryName={category} />
+        <Categories />
         <ul className="videos-wrapper">{videos}</ul>
       </div>
     </>

@@ -2,8 +2,27 @@ import { Outlet } from "react-router-dom";
 import logo from "../../assets/logo.svg";
 import searchlogo from "../../assets/search.svg";
 import "./header.css";
+import { useRef } from "react";
+import { useDispatch } from "react-redux";
+import { handleType } from "../../store/typeOfVidSlice";
 
 export default function Header() {
+  const dispatch = useDispatch();
+  const inputRef = useRef();
+
+  function handleInput() {
+    const search = inputRef.current.value;
+    if (search) {
+      dispatch(handleType(search));
+    }
+  }
+
+  function handleChange(key) {
+    if (key.key === "Enter") {
+      handleInput();
+    }
+  }
+
   return (
     <>
       <header>
@@ -11,10 +30,15 @@ export default function Header() {
           <img alt="YouTube" src={logo} />
         </div>
         <div className="search-engine">
-          <input type="search" placeholder="Search" />
-          <div className="search-btn">
+          <input
+            ref={inputRef}
+            type="search"
+            placeholder="Search"
+            onKeyDown={handleChange}
+          />
+          <button className="search-btn" onClick={handleInput}>
             <img src={searchlogo} alt="search" />
-          </div>
+          </button>
         </div>
         <div className="user-area">
           <button className="btn">Signin</button>

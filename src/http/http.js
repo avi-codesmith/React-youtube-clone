@@ -18,10 +18,10 @@ export const fetchCategories = async () => {
   }
 };
 
-export const fetchVidByCategory = async (category) => {
+export const fetchVidByCategory = async (type) => {
   try {
     const response = await fetch(
-      `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${category}&type=video&maxResults=10&key=${VID_APIKEY_BY_CATEGORY}`,
+      `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${type}&type=video&maxResults=10&key=${VID_APIKEY_BY_CATEGORY}`,
       {
         method: "GET",
       },
