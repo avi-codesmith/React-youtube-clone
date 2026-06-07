@@ -1,3 +1,6 @@
+const categoriesApiKey = import.meta.env.VITE_CATEGORIES_APIKEY;
+const vidAPiKeyByCategory = import.meta.env.VITE_VID_APIKEY_BY_CATEGORY;
+
 export const fetchCategories = async () => {
   try {
     const response = await fetch(
@@ -5,7 +8,7 @@ export const fetchCategories = async () => {
       {
         method: "GET",
         headers: {
-          Authorization: `Bearer ${CATEGORIES_APIKEY}`,
+          Authorization: `Bearer ${categoriesApiKey}`,
           "Content-Type": "application/json",
         },
       },
@@ -22,7 +25,7 @@ export const fetchCategories = async () => {
 export const fetchVidByCategory = async (type) => {
   try {
     const response = await fetch(
-      `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${type}&type=video&maxResults=10&key=${VID_APIKEY_BY_CATEGORY}`,
+      `https://www.googleapis.com/youtube/v3/search?part=snippet${type}&type=video&maxResults=10&key=${vidAPiKeyByCategory}`,
       {
         method: "GET",
       },
