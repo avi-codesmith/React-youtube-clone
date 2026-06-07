@@ -15,6 +15,7 @@ export const fetchCategories = async () => {
     return data;
   } catch (error) {
     console.log(error);
+    throw error;
   }
 };
 
@@ -26,9 +27,16 @@ export const fetchVidByCategory = async (type) => {
         method: "GET",
       },
     );
-    const data = response.json();
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.error?.message || "Ops! API request failed!");
+    }
+
     return data;
   } catch (error) {
-    console.error(error);
+    console.error(error.message);
+    throw error;
   }
 };

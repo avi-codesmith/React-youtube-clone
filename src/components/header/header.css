@@ -1,3 +1,8 @@
+header {
+  position: sticky;
+  top: 0;
+}
+
 /* MAIN SECTION */
 header > div:last-child {
   /* flex: 1; */

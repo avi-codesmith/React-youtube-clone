@@ -5,6 +5,7 @@ import "./header.css";
 import { useRef } from "react";
 import { useDispatch } from "react-redux";
 import { handleType } from "../../store/typeOfVidSlice";
+import { Link } from "react-router-dom";
 
 export default function Header() {
   const dispatch = useDispatch();
@@ -36,9 +37,9 @@ export default function Header() {
             placeholder="Search"
             onKeyDown={handleChange}
           />
-          <button className="search-btn" onClick={handleInput}>
+          <Link to="/" className="search-btn" onClick={handleInput}>
             <img src={searchlogo} alt="search" />
-          </button>
+          </Link>
         </div>
         <div className="user-area">
           <button className="btn">Signin</button>

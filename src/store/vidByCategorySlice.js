@@ -23,9 +23,9 @@ export const vidByCategorySlice = createSlice({
         state.loading = false;
         state.videoData = action.payload;
       })
-      .addCase(getVidByCategory.rejected, (state) => {
+      .addCase(getVidByCategory.rejected, (state, action) => {
         state.loading = false;
-        state.error = true;
+        state.error = action.error.message;
       });
   },
 });
