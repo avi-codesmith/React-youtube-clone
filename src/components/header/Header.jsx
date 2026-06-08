@@ -27,9 +27,9 @@ export default function Header() {
   return (
     <>
       <header>
-        <div className="logo">
+        <Link to="/" className="logo">
           <img alt="YouTube" src={logo} />
-        </div>
+        </Link>
         <div className="search-engine">
           <input
             ref={inputRef}
