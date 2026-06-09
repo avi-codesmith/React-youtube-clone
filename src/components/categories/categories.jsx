@@ -3,9 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { getCategories } from "../../store/categoriesSlice";
 import { handleType } from "../../store/typeOfVidSlice";
 import "./categories.css";
+import Skeleton from "../Skeleton/CategorySkeleton";
 
 export default function Categories() {
-  const { categoriesData } = useSelector((state) => state.categories);
+  const { categoriesData, loading, error } = useSelector(
+    (state) => state.categories,
+  );
   const { type } = useSelector((state) => state.typeOfVid);
   const dispatch = useDispatch();
 
@@ -32,5 +35,9 @@ export default function Categories() {
       ))}
     </ul>
   );
-  return <div className="categories-chamber">{categoriesName}</div>;
+  return (
+    <div className="categories-chamber">
+      {loading ? <Skeleton /> : categoriesName}
+    </div>
+  );
 }

@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { fetchVidByCategory } from "../http/http";
 
-const initialState = { loading: false, error: false, videoData: [] };
+const initialState = { loading: false, error: false, videoData: { items: [] } };
 
 export const getVidByCategory = createAsyncThunk(
   "getVidByCategory",

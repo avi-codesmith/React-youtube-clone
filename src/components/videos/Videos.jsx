@@ -1,27 +1,12 @@
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import FormatTime from "../videoPublishTime/formatTime";
+import VideoSkeleton from "../Skeleton/VideoSkeleton";
 
-export default function Videos({ currentVidId }) {
+export default function Videos({ currentVidId, handleNextVid }) {
   const { videoData, loading, error } = useSelector(
     (state) => state.getVidByCategory,
   );
-
-  const getTimeAgo = (publishTime) => {
-    const diff = new Date() - new Date(publishTime);
-
-    const minutes = Math.floor(diff / (1000 * 60));
-    const hours = Math.floor(diff / (1000 * 60 * 60));
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const months = Math.floor(days / 30);
-    const years = Math.floor(days / 365);
-
-    if (years > 0) return `${years} year${years > 1 ? "s" : ""} ago`;
-    if (months > 0) return `${months} month${months > 1 ? "s" : ""} ago`;
-    if (days > 0) return `${days} day${days > 1 ? "s" : ""} ago`;
-    if (hours > 0) return `${hours} hour${hours > 1 ? "s" : ""} ago`;
-
-    return `${minutes} minute${minutes > 1 ? "s" : ""} ago`;
-  };
 
   const videos =
     videoData?.items?.length > 0 &&
@@ -31,7 +16,7 @@ export default function Videos({ currentVidId }) {
       ?.filter((videoInfo) => videoInfo.id.videoId !== currentVidId)
       ?.map((videoInfo) => (
         <li className="video-card" key={videoInfo.id.videoId}>
-          <Link to={`/video/${videoInfo.id.videoId}`}>
+          <Link onClick={handleNextVid} to={`/video/${videoInfo.id.videoId}`}>
             <img
               className="video-thumbnail"
               alt={videoInfo.snippet.title}
@@ -48,12 +33,20 @@ export default function Videos({ currentVidId }) {
 
                 <h2>{videoInfo.snippet.channelTitle}</h2>
 
-                <p>{getTimeAgo(videoInfo.snippet.publishTime)}</p>
+                <p>
+                  <FormatTime publishTime={videoInfo.snippet.publishTime} />
+                </p>
               </div>
             </div>
           </Link>
         </li>
       ));
 
-  return videos;
+  return loading ? (
+    <VideoSkeleton type="" />
+  ) : error ? (
+    "Something went wrong, Can not fetch Videos, Please try again later!"
+  ) : (
+    videos
+  );
 }

@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { getVidByCategory } from "../../store/vidByCategorySlice";
 import "./homepage.css";
 import Videos from "../../components/videos/Videos";
+import VideoSkeleton from "../../components/Skeleton/VideoSkeleton";
 
 export default function Homepage() {
   const { videoData, loading, error } = useSelector(
@@ -36,10 +37,14 @@ export default function Homepage() {
     <>
       <div>
         <Categories />
-        {!error ? (
-          <ul className="videos-wrapper">{<Videos />}</ul>
-        ) : (
+        {loading ? (
+          <VideoSkeleton type="grid" />
+        ) : error ? (
           <div className="message">{message}</div>
+        ) : (
+          <ul className="videos-wrapper">
+            <Videos />
+          </ul>
         )}
       </div>
     </>
