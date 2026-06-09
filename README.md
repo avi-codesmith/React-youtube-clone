@@ -1,18 +1,25 @@
-# React + Vite
+# 🎥 React YouTube Clone
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A YouTube-inspired video streaming application built using **React.js**, **Redux Toolkit**, and the **YouTube Data API v3**. Users can browse videos, watch them, search by category, and explore a responsive YouTube-like UI.
 
-Currently, two official plugins are available:
+## 🚀 Live Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+🌐 Live Website: https://reactjs-you-tube-clone.netlify.app/
 
-## React Compiler
+## ✨ Features
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+* 🔍 Search videos using YouTube API
+* 🎬 Watch videos in an embedded player
+* 📂 Browse videos by categories
+* 💬 View video comments
+* ⚡ Loading skeleton animations
+* 🎨 YouTube-inspired design
+* 🔄 Dynamic routing with React Router
+* 🗂 State management using Redux Toolkit
 
-Note: This will impact Vite dev & build performances.
+## 🛠 Tech Stack
 
-## Expanding the ESLint configuration
+* ReactJS - ReduxToolkit, ReactRouter and many more...
+* CSS
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+##
