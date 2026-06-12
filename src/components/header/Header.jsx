@@ -1,26 +1,36 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useSearchParams } from "react-router-dom";
 import logo from "../../assets/logo.svg";
 import searchlogo from "../../assets/search.svg";
 import "./header.css";
-import { useRef } from "react";
 import { useDispatch } from "react-redux";
 import { handleType } from "../../store/typeOfVidSlice";
 import { Link } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
 
 export default function Header() {
   const dispatch = useDispatch();
   const inputRef = useRef();
+  const [value, setValue] = useState();
+  const [searchParams, setSearchParams] = useSearchParams();
 
-  function handleInput() {
-    const search = inputRef.current.value;
-    if (search) {
-      dispatch(handleType(search));
-    }
+  const search = searchParams.get("search");
+
+  useEffect(() => {
+    dispatch(handleType(search));
+    console.log("doing", search);
+  }, [value]);
+
+  console.log(search);
+
+  function handleDispatch() {
+    const type = inputRef.current.value;
+    setValue(type);
+    dispatch(handleType(type));
   }
 
-  function handleChange(key) {
-    if (key.key === "Enter") {
-      handleInput();
+  function handleChange(e) {
+    if (e.key === "Enter") {
+      handleDispatch();
     }
   }
 
@@ -32,12 +42,14 @@ export default function Header() {
         </Link>
         <div className="search-engine">
           <input
-            ref={inputRef}
             type="search"
+            ref={inputRef}
             placeholder="Search"
+            onChange={(e) => setSearchParams({ search: e.target.value })}
+            value={search}
             onKeyDown={handleChange}
           />
-          <Link to="/" className="search-btn" onClick={handleInput}>
+          <Link to="/" className="search-btn" onClick={handleDispatch}>
             <img src={searchlogo} alt="search" />
           </Link>
         </div>
