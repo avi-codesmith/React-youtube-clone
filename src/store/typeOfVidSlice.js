@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export const initialState = { type: "" };
+export const initialState = { type: "MostPopular" };
 
 export const typeOfVidSlice = createSlice({
   name: "typeOfVidSlice",
